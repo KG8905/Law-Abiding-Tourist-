@@ -9,12 +9,9 @@ const userSchema = new Schema(
       trim: true,
       unique: true,
     },
-    firstName: {
+    userName: {
       type: String,
-      trim: true,
-    },
-    lastName: {
-      type: String,
+      required: true,
       trim: true,
     },
     password: {
