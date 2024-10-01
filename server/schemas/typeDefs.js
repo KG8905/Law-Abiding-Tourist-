@@ -12,6 +12,21 @@ const typeDefs = `
     updatedAt: String
   }
 
+  type Comment {
+    _id: ID!
+    commentText: String!
+    createdAt: String
+  }
+
+  type Law {
+    _id: ID!
+    category: String!
+    location: String!
+    source: String
+    description: String
+    comments: [Comment]
+  }
+
   type Auth {
     token: ID!
     user: User
