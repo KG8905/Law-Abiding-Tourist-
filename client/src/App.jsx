@@ -10,6 +10,7 @@ import { GlobalContextProvider } from "./context/GlobalContext";
 import { HelmetProvider } from "react-helmet-async";
 import { Outlet } from "react-router-dom";
 import Auth from "./components/Auth";
+import MuiTheme from "./context/ThemeProvider";
 
 const httpLink = createHttpLink({
   uri: "/graphql",
@@ -35,9 +36,11 @@ function App() {
     <ApolloProvider client={client}>
       <HelmetProvider>
         <GlobalContextProvider>
-          <Auth>
-            <Outlet />
-          </Auth>
+          <MuiTheme>
+            <Auth>
+              <Outlet />
+            </Auth>
+          </MuiTheme>
         </GlobalContextProvider>
       </HelmetProvider>
     </ApolloProvider>
