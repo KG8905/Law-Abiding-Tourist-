@@ -23,7 +23,7 @@ const typeDefs = `
     category: String!
     location: String!
     source: String
-    description: String
+    description: String!
     comments: [Comment]
   }
 
@@ -39,6 +39,8 @@ const typeDefs = `
   type Mutation {
     addUser(firstName: String, lastName: String, email: String!, password: String!): Auth
     loginUser(email: String!, password: String!): Auth
+    addLaw: Law
+    addComment: Comment
   }
 `;
 
