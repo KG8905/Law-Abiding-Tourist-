@@ -2,6 +2,14 @@ import { Link } from "react-router-dom";
 import AuthServices from "../utils/auth";
 import { useGlobalContext } from "../context/GlobalContext";
 import DarkThemeSelect from "./DarkThemeSelect";
+import * as React from 'react';
+import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
+import IconButton from '@mui/material/IconButton';
+import MenuIcon from '@mui/icons-material/Menu';
 
 const styles = {
   container: {
@@ -36,16 +44,15 @@ export default function Header() {
   };
 
   return (
-    <nav style={styles.container}>
-      <Link to={"/"} style={styles.undecoratedLink}>
-        <h1>Project-3 Starter Code</h1>
-      </Link>
-      <div style={styles.buttonDiv}>
-        {isAuthenticated && (
-          <Link to={"/dashboard"}>
-            <button style={styles.button}>Dashboard</button>
+    <Box sx={{ flexGrow: 1 }}>
+      <AppBar position="static">
+        <Toolbar>
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+          <Link to={"/"} style={styles.undecoratedLink}>
+        <h1> Law Abiding Tourist</h1>
           </Link>
-        )}
+          </Typography>
+          <DarkThemeSelect />
         {isAuthenticated && (
           <button onClick={handleLogout} style={styles.button}>
             Logout
@@ -61,8 +68,19 @@ export default function Header() {
             <button style={styles.button}>Login</button>
           </Link>
         )}
-      </div>
-      <DarkThemeSelect />
-    </nav>
+        {isAuthenticated && (
+          <Link to={"/dashboard"}>
+            <button style={styles.button}>Dashboard</button>
+          </Link>
+        )}
+        </Toolbar>
+      </AppBar>
+    </Box>
   );
 }
+//   return (
+//     <nav style={styles.container}>
+//       <div style={styles.buttonDiv}>
+//       </div>
+//     </nav>
+//   );
