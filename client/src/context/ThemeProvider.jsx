@@ -4,6 +4,7 @@ import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import { ThemeProvider, createTheme, useColorScheme } from '@mui/material/styles';
 import { CssBaseline } from '@mui/material';
+import { indigo, pink, teal, blueGrey } from '@mui/material/colors';
 
 function MyApp() {
   const { mode, setMode } = useColorScheme();
@@ -35,9 +36,35 @@ function MyApp() {
 
 const theme = createTheme({
   colorSchemes: {
-    dark: true,
+    light: {
+      palette: {
+        primary: {
+          main: indigo[400],  
+        },
+        secondary: {
+          main: pink[100], 
+        },
+        background: {
+          default: teal[50], 
+        },
+      },
+    },
+    dark: {
+      palette: {
+        primary: {
+          main: indigo[400],  
+        },
+        secondary: {
+          main: pink[400], 
+        },
+        background: {
+          default: blueGrey[600], 
+        },
+      },
+    },
   },
 });
+
 
 export default function MuiTheme({ children }) {
   return (
