@@ -39,7 +39,6 @@ const lawSchema = new Schema(
         },
         source: {
             type: String,
-            required: true,
             trim: true,
         },
         description: {

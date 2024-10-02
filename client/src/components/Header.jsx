@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import AuthServices from "../utils/auth";
 import { useGlobalContext } from "../context/GlobalContext";
+import DarkThemeSelect from "./DarkThemeSelect";
 
 const styles = {
   container: {
@@ -61,6 +62,7 @@ export default function Header() {
           </Link>
         )}
       </div>
+      <DarkThemeSelect />
     </nav>
   );
 }
