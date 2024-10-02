@@ -58,7 +58,7 @@ const theme = createTheme({
           main: pink[400], 
         },
         background: {
-          default: blueGrey[600], 
+          default: blueGrey[800], 
         },
       },
     },
