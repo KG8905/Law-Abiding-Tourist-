@@ -10,6 +10,11 @@
   },
   "dependencies": {
     "@apollo/client": "^3.7.17",
+    "@emotion/react": "^11.13.3",
+    "@emotion/styled": "^11.13.0",
+    "@fontsource/roboto": "^5.1.0",
+    "@mui/icons-material": "^6.1.1",
+    "@mui/material": "^6.1.1",
     "@testing-library/react": "^13.4.0",
     "graphql": "^16.7.1",
     "happy-dom": "^9.20.3",
