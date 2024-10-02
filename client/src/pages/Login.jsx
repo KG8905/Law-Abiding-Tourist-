@@ -6,17 +6,20 @@ import Page from "../components/Page";
 import AuthService from "../utils/auth";
 import { useGlobalContext } from "../context/GlobalContext";
 
-const styles = {
-  form: {
-    display: "flex",
-    flexDirection: "Column",
-    width: "300px",
-  },
-  submitBtn: {
-    cursor: "pointer",
-  },
-};
+//-MUI Import Below
+import Box from "@mui/material/Box";
+import Card from "@mui/material/Card";
+// import CardActions from "@mui/material/CardActions";
+import CardContent from "@mui/material/CardContent";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
+import Stack from "@mui/material/Stack";
+import { styled } from "@mui/material/styles";
+import { Container, TextField, Divider, Link } from "@mui/material";
+import GoogleIcon from "@mui/icons-material/Google";
+import AppleIcon from "@mui/icons-material/Apple";
 
+//Imported Group Code
 const headContent = (
   <>
     <title>Change Me! - Login</title>
@@ -64,33 +67,196 @@ export default function Login() {
 
   return (
     <Page isProtected={false} headContent={headContent}>
-      <div>Login</div>
-      <form style={styles.form} onSubmit={handleFormSubmit}>
-        <input
-          placeholder="Email"
-          name="email"
-          type="email"
-          value={formState.email}
-          onChange={handleChange}
-        />
-        <input
-          placeholder="Password"
-          name="password"
-          type="password"
-          value={formState.password}
-          onChange={handleChange}
-        />
-        {loading ? (
-          <button type="submit" disabled={true} style={styles.submitBtn}>
-            Loading...
-          </button>
-        ) : (
-          <button type="submit" style={styles.submitBtn}>
-            Submit
-          </button>
-        )}
-      </form>
-      {error && <h3>{error.message}</h3>}
+      <Container sx={{ flexGrow: 1, display: "flex" }}>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            flexGrow: 1,
+          }}
+        >
+          <Card>
+            <CardContent>
+              <Stack spacing={4}>
+                <Typography
+                  component="h1"
+                  variant="h4"
+                  sx={{ width: "100%", fontSize: "clamp(12px)" }}
+                >
+                  Login
+                </Typography>
+                <Box
+                  component="form"
+                  onSubmit={handleFormSubmit}
+                  sx={{
+                    display: "flex",
+                    alightItems: "center",
+                    justifyContent: "center",
+                    flexDirection: "column",
+                    flexGrow: 1,
+                    width: "100%",
+                    gap: 2,
+                  }}
+                >
+                  <TextField
+                    placeholder="Email"
+                    name="email"
+                    type="email"
+                    value={formState.email}
+                    onChange={handleChange}
+                    fullWidth
+                  />
+                  <TextField
+                    placeholder="Password"
+                    name="password"
+                    type="password"
+                    value={formState.password}
+                    onChange={handleChange}
+                    fullWidth
+                  />
+                  <Box
+                    sx={{
+                      display: "flex",
+                      justifyContent: "space-between",
+                      alignItems: "center",
+                    }}
+                  >
+                    <Link component="button" variant="body2">
+                      Forgot Password?
+                    </Link>
+                  </Box>
+                  <Button
+                    type="submit"
+                    fullWidth
+                    variant="contained"
+                    disabled={loading}
+                  >
+                    {loading ? "Loading..." : "Submit"}
+                  </Button>
+                </Box>
+                {error && (
+                  <Typography color="error">{error.message}</Typography>
+                )}
+                <Typography sx={{ textAlign: "center" }}>
+                  Don't have an account?{" "}
+                  <Link href="/signup" variant="body2">
+                    Sign up
+                  </Link>
+                </Typography>
+                <Divider>or</Divider>
+                <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
+                  <Button
+                    fullWidth
+                    variant="outlined"
+                    startIcon={<GoogleIcon />}
+                  >
+                    Sign in with Google
+                  </Button>
+                  <Button
+                    fullWidth
+                    variant="outlined"
+                    startIcon={<AppleIcon />}
+                  >
+                    Sign in with Apple
+                  </Button>
+                </Box>
+              </Stack>
+            </CardContent>
+          </Card>
+        </Box>
+
+        {/* <StyledCard>
+            <CardContent>
+              <Stack spacing={4}>
+                <Typography
+                  component="h1"
+                  variant="h4"
+                  sx={{ width: "100%", fontSize: "clamp(12px)" }}
+                >
+                  Login
+                </Typography>
+                <Box
+                  component="form"
+                  onSubmit={handleFormSubmit}
+                  sx={{
+                    display: "flex",
+                    alightItems: "center",
+                    justifyContent: "center",
+                    flexDirection: "column",
+                    flexGrow: 1,
+                    width: "100%",
+                    gap: 2,
+                  }}
+                >
+                  <TextField
+                    placeholder="Email"
+                    name="email"
+                    type="email"
+                    value={formState.email}
+                    onChange={handleChange}
+                    fullWidth
+                  />
+                  <TextField
+                    placeholder="Password"
+                    name="password"
+                    type="password"
+                    value={formState.password}
+                    onChange={handleChange}
+                    fullWidth
+                  />
+                  <Box
+                    sx={{
+                      display: "flex",
+                      justifyContent: "space-between",
+                      alignItems: "center",
+                    }}
+                  >
+                    <Link component="button" variant="body2">
+                      Forgot Password?
+                    </Link>
+                  </Box>
+                  <Button
+                    type="submit"
+                    fullWidth
+                    variant="contained"
+                    disabled={loading}
+                  >
+                    {loading ? "Loading..." : "Submit"}
+                  </Button>
+                </Box>
+                {error && (
+                  <Typography color="error">{error.message}</Typography>
+                )}
+                <Typography sx={{ textAlign: "center" }}>
+                  Don't have an account?{" "}
+                  <Link href="/signup" variant="body2">
+                    Sign up
+                  </Link>
+                </Typography>
+                <Divider>or</Divider>
+                <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
+                  <Button
+                    fullWidth
+                    variant="outlined"
+                    startIcon={<GoogleIcon />}
+                  >
+                    Sign in with Google
+                  </Button>
+                  <Button
+                    fullWidth
+                    variant="outlined"
+                    startIcon={<AppleIcon />}
+                  >
+                    Sign in with Apple
+                  </Button>
+                </Box>
+              </Stack>
+            </CardContent>
+          </StyledCard> */}
+      </Container>
+      {/* <LoginContainer>
+      </LoginContainer> */}
     </Page>
   );
 }
