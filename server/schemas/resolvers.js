@@ -1,4 +1,4 @@
-const { User } = require('../models');
+const { User, Law } = require('../models');
 const { signToken, AuthenticationError } = require('../utils/auth');
 const { dateScalar } = require('./scalar');
 
@@ -11,6 +11,15 @@ const resolvers = {
       }
       return await User.findById(context.user._id)
     },
+    category: async (parent, {category}) => {
+      return Law.find({ category: category }).limit(10);
+    },
+    location: async (parents, { location }) => {
+      return Law.find({ location: location }).limit(10);
+    },
+    law: async () => {
+      return Law.find();
+    }
   },
   Mutation: {
     addUser: async (parent, argObj) => {
@@ -38,6 +47,24 @@ const resolvers = {
       const token = signToken(user);
 
       return { token, user };
+    },
+    addLaw: async (parent, args, context) => {
+      if (context.user) {
+        const law = await Law.create(args);
+        return law;
+      };
+      throw AuthenticationError;
+    },
+    addComment: async (parent, { _id, comments }, context) => {
+      if(context.user) {
+        const comment = await Law.findOneAndUpdate(
+          { _id },
+          { $push: { comments: comments } },
+          { new: true }
+        );
+        return comment;
+      };
+      throw AuthenticationError;
     },
   }
 };
