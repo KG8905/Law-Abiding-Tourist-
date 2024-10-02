@@ -39,26 +39,32 @@ const theme = createTheme({
     light: {
       palette: {
         primary: {
-          main: indigo[400],  
+          main: '#2c6ec3',
         },
         secondary: {
-          main: pink[100], 
+          main: '#f7055f',
         },
         background: {
-          default: teal[50], 
+          default: '#b6f3f3',
+        },
+        text: {
+          primary: '#000000',
         },
       },
     },
     dark: {
       palette: {
         primary: {
-          main: indigo[400],  
+          main: '#0d47a1',
         },
         secondary: {
-          main: pink[400], 
+          main: '#f7055f',
         },
         background: {
-          default: blueGrey[800], 
+          default: '#1b3734',
+        },
+        text: {
+          primary: '#f5e8e8',
         },
       },
     },
