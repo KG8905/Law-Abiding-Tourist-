@@ -51,26 +51,46 @@ export default function Header() {
           <Link to={"/"} style={styles.undecoratedLink}>
         <h1> Law Abiding Tourist</h1>
           </Link>
+
+          <Link to={"/about"}>
+          <Button variant="contained" onClick={handleLogout} style={styles.button}>
+            About
+          </Button>
+          </Link>
+
+          <Link to={"/selection"}>
+          <Button variant="contained" onClick={handleLogout} style={styles.button}>
+            Selection
+          </Button>
+          </Link>
+
+          <Link to={"/law"}>
+          <Button variant="contained" onClick={handleLogout} style={styles.button}>
+            Laws
+          </Button>
+          </Link>
+
+
           </Typography>
           <DarkThemeSelect />
         {isAuthenticated && (
-          <button onClick={handleLogout} style={styles.button}>
+          <Button variant="contained" onClick={handleLogout} style={styles.button}>
             Logout
-          </button>
+          </Button>
         )}
         {!isAuthenticated && (
           <Link to={"/signup"}>
-            <button style={styles.button}>Sign Up</button>
+            <Button variant="contained" style={styles.button}>Sign Up</Button>
           </Link>
         )}
         {!isAuthenticated && (
           <Link to={"/login"}>
-            <button style={styles.button}>Login</button>
+            <Button variant="contained" style={styles.button}>Login</Button>
           </Link>
         )}
         {isAuthenticated && (
           <Link to={"/dashboard"}>
-            <button style={styles.button}>Dashboard</button>
+            <Button variant="contained" style={styles.button}>Dashboard</Button>
           </Link>
         )}
         </Toolbar>
@@ -78,9 +98,3 @@ export default function Header() {
     </Box>
   );
 }
-//   return (
-//     <nav style={styles.container}>
-//       <div style={styles.buttonDiv}>
-//       </div>
-//     </nav>
-//   );
