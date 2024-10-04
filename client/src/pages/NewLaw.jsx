@@ -2,31 +2,102 @@ import React, { useState } from 'react';
 
 const categories = [
   'Traffic',
-  'Hunting'
+  'Wildlife',
+  'Civil',
+  'Criminal',
+  'Probate',
 ]
 
 const allUsStates = [
-  
+  "AL",
+  "AK",
+  "AS",
+  "AZ",
+  "AR",
+  "CA",
+  "CO",
+  "CT",
+  "DE",
+  "DC",
+  "FM",
+  "FL",
+  "GA",
+  "GU",
+  "HI",
+  "ID",
+  "IL",
+  "IN",
+  "IA",
+  "KS",
+  "KY",
+  "LA",
+  "ME",
+  "MH",
+  "MD",
+  "MA",
+  "MI",
+  "MN",
+  "MS",
+  "MO",
+  "MT",
+  "NE",
+  "NV",
+  "NH",
+  "NJ",
+  "NM",
+  "NY",
+  "NC",
+  "ND",
+  "MP",
+  "OH",
+  "OK",
+  "OR",
+  "PW",
+  "PA",
+  "PR",
+  "RI",
+  "SC",
+  "SD",
+  "TN",
+  "TX",
+  "UT",
+  "VT",
+  "VI",
+  "VA",
+  "WA",
+  "WV",
+  "WI",
+  "WY"
 ]
 
 const NewLaw = () => {
     const [title, setTitle] = useState('');
-    const [subject, setSubject] = useState('');
-    const [content, setContent] = useState('');
+    const [category, setCategory] = useState('');
+    const [description, setDescription] = useState('');
+    const [location, setLocation] = useState('');
+    const [comments, setComments] = useState('');
+    const [source, setSource] = useState('');
+
     const [submittedData, setSubmittedData] = useState(null);
     
     const handleSubmit = (e) => {
         e.preventDefault();
         const formData = {
             title,
-            subject,
-            content,
+            category,
+            description,
+            location,
+            comments,
+            source
         };
         setSubmittedData(formData);
 
         setTitle('');  
-        setSubject('');
-        setContent('');
+        setCategory('');
+        setDescription('');
+        setLocation('');
+        setComments('');
+        setSource('');
     };
 
 
@@ -49,25 +120,57 @@ return (
 
 {/* Select from MUI */}
       <div className="form-group">
-        <label>Subject:</label>
+        <label>Category:</label>
         <input
           type="text"
-          value={subject}
-          onChange={(e) => setSubject(e.target.value)}
-          placeholder="Enter the subject"
+          value={category}
+          onChange={(e) => setCategory(e.target.value)}
+          placeholder="Enter the Category"
           required
         />
       </div>
 
       <div className="form-group">
-        <label>Content:</label>
+        <label>Description:</label>
         <textarea
-          value={content}
-          onChange={(e) => setContent(e.target.value)}
-          placeholder="Write your content here"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+          placeholder="Write your description here"
           required
         />
       </div>
+
+      <div className="form-group">
+        <label>Location:</label>
+        <textarea
+          value={location}
+          onChange={(e) => setLocation(e.target.value)}
+          placeholder="What is your location"
+          required
+        />
+      </div>
+
+      <div className="form-group">
+        <label>Comments:</label>
+        <textarea
+          value={comments}
+          onChange={(e) => setComments(e.target.value)}
+          placeholder="Comments"
+          required
+        />
+      </div>
+
+      <div className="form-group">
+        <label>Source:</label>
+        <textarea
+          value={source}
+          onChange={(e) => setSource(e.target.value)}
+          placeholder="What is your source"
+          required
+        />
+      </div>
+
+
 
       <button type="submit">Submit</button>
     </form>
@@ -76,8 +179,11 @@ return (
       <div className="submission-output">
         <h2>Submitted Data</h2>
         <p><strong>Title:</strong> {submittedData.title}</p>
-        <p><strong>Subject:</strong> {submittedData.subject}</p>
-        <p><strong>Content:</strong> {submittedData.content}</p>
+        <p><strong>Category:</strong> {submittedData.category}</p>
+        <p><strong>Description:</strong> {submittedData.description}</p>
+        <p><strong>Location:</strong> {submittedData.location}</p>
+        <p><strong>Comments:</strong> {submittedData.comments}</p>
+        <p><strong>Source</strong> {submittedData.source}</p>
       </div>
     )}
   </div>
