@@ -19,6 +19,9 @@ const resolvers = {
     },
     law: async () => {
       return Law.find();
+    },
+    lawById: async (parent, { lawId }) => {
+      return Law.findOne({ _id: lawId });
     }
   },
   Mutation: {

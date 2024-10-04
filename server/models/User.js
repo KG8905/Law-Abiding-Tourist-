@@ -8,6 +8,7 @@ const userSchema = new Schema(
       required: true,
       trim: true,
       unique: true,
+      match: [/.+@.+\..+/, 'Must match an email address!'],
     },
     userName: {
       type: String,
