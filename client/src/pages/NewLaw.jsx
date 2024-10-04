@@ -118,17 +118,27 @@ return (
         />
       </div>
 
-{/* Select from MUI */}
-      <div className="form-group">
-        <label>Category:</label>
-        <input
-          type="text"
-          value={category}
-          onChange={(e) => setCategory(e.target.value)}
-          placeholder="Enter the Category"
-          required
-        />
-      </div>
+        {/* Select from MUI */}
+        <div className="form-group">
+          <FormControl fullWidth>
+            <InputLabel id="demo-simple-select-label">Category</InputLabel>
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              // value={categories}
+              label="Category"
+              onChange={handleChange}
+            >
+              {categories.map((category) => {
+                return (
+                  <MenuItem value={category}>category</MenuItem>
+                )
+              })}
+              {/* <MenuItem value={20}>Twenty</MenuItem>
+              <MenuItem value={30}>Thirty</MenuItem> */}
+            </Select>
+          </FormControl>
+        </div>
 
       <div className="form-group">
         <label>Description:</label>
