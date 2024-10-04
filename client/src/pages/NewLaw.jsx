@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { FormControl, Select, InputLabel, MenuItem } from '@mui/material';
 
 const categories = [
   'Traffic',
@@ -127,7 +128,7 @@ return (
               id="demo-simple-select"
               // value={categories}
               label="Category"
-              onChange={handleChange}
+              // onChange={handleChange}
             >
               {categories.map((category) => {
                 return (
