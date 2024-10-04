@@ -139,6 +139,16 @@ return (
             </Select>
           </FormControl>
         </div>
+        
+      <div className="form-group">
+        <label>Location:</label>
+        <textarea
+          value={location}
+          onChange={(e) => setLocation(e.target.value)}
+          placeholder="What is your location"
+          required
+        />
+      </div>
 
       <div className="form-group">
         <label>Description:</label>
@@ -150,15 +160,6 @@ return (
         />
       </div>
 
-      <div className="form-group">
-        <label>Location:</label>
-        <textarea
-          value={location}
-          onChange={(e) => setLocation(e.target.value)}
-          placeholder="What is your location"
-          required
-        />
-      </div>
 
       <div className="form-group">
         <label>Comments:</label>
