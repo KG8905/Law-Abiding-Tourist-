@@ -76,7 +76,7 @@ export default function Header() {
                 </Button>
               </Link>
 
-              <Link to={"/law"}>
+              <Link to={"/newlaw"}>
                 <Button
                   variant="contained"
                   onClick={handleLogout}
