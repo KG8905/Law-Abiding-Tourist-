@@ -17,7 +17,7 @@ const resolvers = {
     location: async (parents, { location }) => {
       return Law.find({ location: location }).limit(10);
     },
-    law: async () => {
+    laws: async () => {
       return Law.find();
     },
     lawById: async (parent, { lawId }) => {

@@ -33,18 +33,32 @@ const typeDefs = `
     user: User
   }
 
+  input lawInput {
+    category: String!
+    location: String!
+    source: String
+    description: String!
+    title: String!
+  }
+
+  input commentInput {
+    userName: String!
+    commentText: String!
+  }
+
   type Query {
     me: User
-    Users: [User]!
-    user(userId: ID!): User
-    law(lawId: ID!): Law
+    category(category: String!): [Law]
+    location(location: String!): [Law]
+    laws: [Law]
+    lawById(lawId: ID!): Law
   }
 
   type Mutation {
-    addUser(firstName: String, lastName: String, email: String!, password: String!): Auth
+    addUser(userName: String, email: String!, password: String!): Auth
     loginUser(email: String!, password: String!): Auth
-    addLaw: Law
-    addComment: Comment
+    addLaw(lawInput: lawInput): Law
+    addComment(commentInput: commentInput): Comment
   }
 `;
 
