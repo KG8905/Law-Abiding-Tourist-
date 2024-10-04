@@ -1,5 +1,4 @@
 const { Schema, model } = require('mongoose');
-const bcrypt = require('bcrypt');
 
 const commentSchema = new Schema(
     {
@@ -45,6 +44,10 @@ const lawSchema = new Schema(
             type: String, 
             required: true,
             trim: true,
+        },
+        title: {
+            type: String,
+            required: true,
         },
         comments: [commentSchema]
     },

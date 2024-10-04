@@ -4,8 +4,7 @@ const typeDefs = `
 
   type User {
     _id: ID!
-    firstName: String
-    lastName: String
+    userName: String!
     email: String!
     password: String!
     createdAt: String
@@ -14,6 +13,7 @@ const typeDefs = `
 
   type Comment {
     _id: ID!
+    userName: String!
     commentText: String!
     createdAt: String
   }
@@ -23,7 +23,8 @@ const typeDefs = `
     category: String!
     location: String!
     source: String
-    description: String
+    description: String!
+    title: String!
     comments: [Comment]
   }
 
@@ -34,11 +35,16 @@ const typeDefs = `
 
   type Query {
     me: User
+    Users: [User]!
+    user(userId: ID!): User
+    law(lawId: ID!): Law
   }
 
   type Mutation {
     addUser(firstName: String, lastName: String, email: String!, password: String!): Auth
     loginUser(email: String!, password: String!): Auth
+    addLaw: Law
+    addComment: Comment
   }
 `;
 

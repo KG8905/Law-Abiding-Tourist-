@@ -8,6 +8,7 @@ const styles = {
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
+    padding: 20
   },
 };
 
