@@ -46,8 +46,7 @@ export default function SignUp() {
   const { isAuthenticated } = state;
 
   const [formState, setFormState] = useState({
-    firstName: "",
-    lastName: "",
+    userName: "",
     email: "",
     password: "",
   });
@@ -119,7 +118,7 @@ export default function SignUp() {
                         placeholder="User Name"
                         name="userName"
                         type="text"
-                        value={formState.firstName}
+                        value={formState.userName}
                         onChange={handleChange}
                       />
                       <TextField
