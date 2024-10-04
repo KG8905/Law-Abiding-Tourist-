@@ -118,14 +118,34 @@ return (
         />
       </div>
 
-{/* Select from MUI */}
+        {/* Select from MUI */}
+        <div className="form-group">
+          <FormControl fullWidth>
+            <InputLabel id="demo-simple-select-label">Category</InputLabel>
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              // value={categories}
+              label="Category"
+              onChange={handleChange}
+            >
+              {categories.map((category) => {
+                return (
+                  <MenuItem value={category}>category</MenuItem>
+                )
+              })}
+              {/* <MenuItem value={20}>Twenty</MenuItem>
+              <MenuItem value={30}>Thirty</MenuItem> */}
+            </Select>
+          </FormControl>
+        </div>
+        
       <div className="form-group">
-        <label>Category:</label>
-        <input
-          type="text"
-          value={category}
-          onChange={(e) => setCategory(e.target.value)}
-          placeholder="Enter the Category"
+        <label>Location:</label>
+        <textarea
+          value={location}
+          onChange={(e) => setLocation(e.target.value)}
+          placeholder="What is your location"
           required
         />
       </div>
@@ -140,15 +160,6 @@ return (
         />
       </div>
 
-      <div className="form-group">
-        <label>Location:</label>
-        <textarea
-          value={location}
-          onChange={(e) => setLocation(e.target.value)}
-          placeholder="What is your location"
-          required
-        />
-      </div>
 
       <div className="form-group">
         <label>Comments:</label>

@@ -116,17 +116,10 @@ export default function SignUp() {
                   <FormControl style={styles.form} onSubmit={handleFormSubmit}>
                     <Stack spacing={2}>
                       <TextField
-                        placeholder="First Name"
-                        name="firstName"
+                        placeholder="User Name"
+                        name="userName"
                         type="text"
                         value={formState.firstName}
-                        onChange={handleChange}
-                      />
-                      <TextField
-                        placeholder="Last Name"
-                        name="lastName"
-                        type="text"
-                        value={formState.lastName}
                         onChange={handleChange}
                       />
                       <TextField
