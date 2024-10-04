@@ -1,4 +1,5 @@
 import Page from "../components/Page";
+import { Box, Grid, Paper, Typography } from "@mui/material";
 
 const headContent = (
   <>
@@ -9,8 +10,10 @@ const headContent = (
 
 export default function Home() {
   return (
-    <Page isProtected={false} headContent={headContent}>
-      <div>Home</div>
-    </Page>
+    <Page
+      isProtected={false}
+      headContent={headContent}
+      sx={{ p: 2, maxWidth: 1920, mx: "auto" }}
+    ></Page>
   );
 }
