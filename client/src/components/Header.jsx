@@ -2,14 +2,15 @@ import { Link } from "react-router-dom";
 import AuthServices from "../utils/auth";
 import { useGlobalContext } from "../context/GlobalContext";
 import DarkThemeSelect from "./DarkThemeSelect";
-import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
-import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
+import * as React from "react";
+import AppBar from "@mui/material/AppBar";
+import Box from "@mui/material/Box";
+import Toolbar from "@mui/material/Toolbar";
+import Typography from "@mui/material/Typography";
+import Button from "@mui/material/Button";
+import IconButton from "@mui/material/IconButton";
+import MenuIcon from "@mui/icons-material/Menu";
+import { Stack } from "@mui/material";
 
 const styles = {
   container: {
@@ -47,52 +48,76 @@ export default function Header() {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-          <Link to={"/"} style={styles.undecoratedLink}>
-        <h1> Law Abiding Tourist</h1>
-          </Link>
+          <Box sx={{ flexGrow: 1 }}>
+            <Stack direction={"row"} spacing={1} sx={{ alignItems: "center" }}>
+              <Link to={"/"} style={styles.undecoratedLink}>
+                <Typography variant="h5" sx={{ display: "inline-block" }}>
+                  Law Abiding Tourist
+                </Typography>
+              </Link>
 
-          <Link to={"/about"}>
-          <Button variant="contained" onClick={handleLogout} style={styles.button}>
-            About
-          </Button>
-          </Link>
+              <Link to={"/about"}>
+                <Button
+                  variant="contained"
+                  onClick={handleLogout}
+                  style={styles.button}
+                >
+                  About
+                </Button>
+              </Link>
 
-          <Link to={"/selection"}>
-          <Button variant="contained" onClick={handleLogout} style={styles.button}>
-            Selection
-          </Button>
-          </Link>
+              <Link to={"/selection"}>
+                <Button
+                  variant="contained"
+                  onClick={handleLogout}
+                  style={styles.button}
+                >
+                  Selection
+                </Button>
+              </Link>
 
-          <Link to={"/law"}>
-          <Button variant="contained" onClick={handleLogout} style={styles.button}>
-            Laws
-          </Button>
-          </Link>
-
-
-          </Typography>
+              <Link to={"/law"}>
+                <Button
+                  variant="contained"
+                  onClick={handleLogout}
+                  style={styles.button}
+                >
+                  Laws
+                </Button>
+              </Link>
+            </Stack>
+          </Box>
           <DarkThemeSelect />
-        {isAuthenticated && (
-          <Button variant="contained" onClick={handleLogout} style={styles.button}>
-            Logout
-          </Button>
-        )}
-        {!isAuthenticated && (
-          <Link to={"/signup"}>
-            <Button variant="contained" style={styles.button}>Sign Up</Button>
-          </Link>
-        )}
-        {!isAuthenticated && (
-          <Link to={"/login"}>
-            <Button variant="contained" style={styles.button}>Login</Button>
-          </Link>
-        )}
-        {isAuthenticated && (
-          <Link to={"/dashboard"}>
-            <Button variant="contained" style={styles.button}>Dashboard</Button>
-          </Link>
-        )}
+          {isAuthenticated && (
+            <Button
+              variant="contained"
+              onClick={handleLogout}
+              style={styles.button}
+            >
+              Logout
+            </Button>
+          )}
+          {!isAuthenticated && (
+            <Link to={"/signup"}>
+              <Button variant="contained" style={styles.button}>
+                Sign Up
+              </Button>
+            </Link>
+          )}
+          {!isAuthenticated && (
+            <Link to={"/login"}>
+              <Button variant="contained" style={styles.button}>
+                Login
+              </Button>
+            </Link>
+          )}
+          {isAuthenticated && (
+            <Link to={"/dashboard"}>
+              <Button variant="contained" style={styles.button}>
+                Dashboard
+              </Button>
+            </Link>
+          )}
         </Toolbar>
       </AppBar>
     </Box>
