@@ -59,7 +59,6 @@ export default function Header() {
               <Link to={"/about"}>
                 <Button
                   variant="contained"
-                  onClick={handleLogout}
                   style={styles.button}
                 >
                   About
@@ -69,17 +68,15 @@ export default function Header() {
               <Link to={"/selection"}>
                 <Button
                   variant="contained"
-                  onClick={handleLogout}
                   style={styles.button}
                 >
                   Selection
                 </Button>
               </Link>
 
-              <Link to={"/law"}>
+              <Link to={"/newlaw"}>
                 <Button
                   variant="contained"
-                  onClick={handleLogout}
                   style={styles.button}
                 >
                   Laws

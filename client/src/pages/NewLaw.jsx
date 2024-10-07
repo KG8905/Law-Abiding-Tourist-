@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import { FormControl, Select, InputLabel, MenuItem } from '@mui/material';
+import Page from "../components/Page";
+import { Container } from "@mui/material";
 
 const categories = [
   'Traffic',
@@ -100,9 +103,20 @@ const NewLaw = () => {
         setSource('');
     };
 
-
+    const headContent = (
+      <>
+        <title>Laws</title>
+        <meta
+          name="description"
+          content="Law."
+        />
+      </>
+    );
+    
 
 return (
+  <Page isProtected={false} headContent={headContent}>
+  <Container sx={{ flexGrow: 1, display: "flex" }}>
     <div className="form-container">
     <h1>New Law</h1>
     <form onSubmit={handleSubmit}>
@@ -127,7 +141,7 @@ return (
               id="demo-simple-select"
               // value={categories}
               label="Category"
-              onChange={handleChange}
+              // onChange={handleChange}
             >
               {categories.map((category) => {
                 return (
@@ -198,6 +212,8 @@ return (
       </div>
     )}
   </div>
+  </Container>
+    </Page>
 );
 };
 
