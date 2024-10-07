@@ -53,16 +53,17 @@ const resolvers = {
     },
     addLaw: async (parent, args, context) => {
       if (context.user) {
-        const law = await Law.create(args);
+        const law = await Law.create(args.lawInput);
         return law;
       };
       throw AuthenticationError;
     },
-    addComment: async (parent, { _id, comments }, context) => {
+    addComment: async (parent, args, context) => {
+      const { _id, commentInput } = args
       if(context.user) {
         const comment = await Law.findOneAndUpdate(
           { _id },
-          { $push: { comments: comments } },
+          { $push: { comments: commentInput } },
           { new: true }
         );
         return comment;
