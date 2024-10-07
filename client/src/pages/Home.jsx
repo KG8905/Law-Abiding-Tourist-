@@ -1,5 +1,6 @@
 import Page from "../components/Page";
-import { Box, Grid, Paper, Typography } from "@mui/material";
+import { Box, Container, Paper, Typography } from "@mui/material";
+import Grid from "@mui/material/Grid2";
 
 const headContent = (
   <>
@@ -13,7 +14,14 @@ export default function Home() {
     <Page
       isProtected={false}
       headContent={headContent}
-      sx={{ p: 2, maxWidth: 1920, mx: "auto" }}
-    ></Page>
+      // sx={{ p: 2, maxWidth: 1920, mx: "auto" }}
+    >
+      <Container>
+        <Grid container>
+          <Grid size={6}>hi</Grid>
+          <Grid size={6}>hi</Grid>
+        </Grid>
+      </Container>
+    </Page>
   );
 }
