@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { FormControl, Select, InputLabel, MenuItem, Box } from '@mui/material';
 import Page from "../components/Page";
 import { Container } from "@mui/material";
+import { useMutation } from '@apollo/client';
+import { ADD_LAW } from '../graphql/mutations';
 
 const categories = [
   'Traffic',
@@ -27,17 +29,25 @@ const NewLaw = () => {
   const [source, setSource] = useState('');
   const [submittedData, setSubmittedData] = useState(null);
 
-  const handleSubmit = (e) => {
+  const [createLaw, {loading}] = useMutation(ADD_LAW)
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = {
       title,
       category,
       description,
       location,
-      comments,
+      // comments,
       source
     };
-    setSubmittedData(formData);
+    // setSubmittedData(formData);
+
+    await createLaw({
+      variables: {
+        lawInput: formData
+      }
+    });
 
     setTitle('');
     setCategory('');

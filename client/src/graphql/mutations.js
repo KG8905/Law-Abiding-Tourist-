@@ -33,3 +33,11 @@ export const ADD_USER = gql`
     }
   }
 `;
+
+export const ADD_LAW = gql`
+mutation AddLaw($lawInput: lawInput) {
+  addLaw(lawInput: $lawInput) {
+    _id
+  }
+}
+`
