@@ -7,7 +7,7 @@ import Home from "./pages/Home";
 import Page404 from "./pages/Page404";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
-import Dashboard from "./pages/Dashboard.jsx";
+import Selection from "./pages/Selection.jsx";
 import App from "./App.jsx";
 import NewLaw from "./pages/NewLaw.jsx";
 
@@ -22,8 +22,8 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/dashboard",
-        element: <Dashboard />,
+        path: "/selection",
+        element: <Selection />,
       },
       {
         path: "/login",

@@ -13,3 +13,18 @@ export const QUERY_ME = gql`
   }
 `;
 
+export const QUERY_LAWS = gql`
+  query getLawsQuery{
+    laws {
+      location
+      category
+      source
+      description
+      title
+      comments {
+        userName
+        commentText
+      }
+    }
+  }
+`;

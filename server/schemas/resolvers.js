@@ -12,16 +12,16 @@ const resolvers = {
       return await User.findById(context.user._id)
     },
     category: async (parent, {category}) => {
-      return Law.find({ category: category }).limit(10);
+      return await Law.find({ category: category }).limit(10);
     },
     location: async (parents, { location }) => {
-      return Law.find({ location: location }).limit(10);
+      return await Law.find({ location: location }).limit(10);
     },
     laws: async () => {
-      return Law.find();
+      return await Law.find();
     },
     lawById: async (parent, { lawId }) => {
-      return Law.findOne({ _id: lawId });
+      return await Law.findOne({ _id: lawId });
     }
   },
   Mutation: {

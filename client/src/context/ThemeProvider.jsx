@@ -1,42 +1,10 @@
 import * as React from "react";
-import Box from "@mui/material/Box";
-import Select from "@mui/material/Select";
-import MenuItem from "@mui/material/MenuItem";
 import {
   ThemeProvider,
   createTheme,
-  useColorScheme,
 } from "@mui/material/styles";
 import { CssBaseline } from "@mui/material";
 import { indigo, pink, teal, blueGrey } from "@mui/material/colors";
-
-function MyApp() {
-  const { mode, setMode } = useColorScheme();
-  if (!mode) {
-    return null;
-  }
-  return (
-    <Box
-      sx={{
-        display: "flex",
-        width: "100%",
-        alignItems: "center",
-        justifyContent: "center",
-        bgcolor: "background.default",
-        color: "text.primary",
-        borderRadius: 1,
-        p: 3,
-        minHeight: "56px",
-      }}
-    >
-      <Select value={mode} onChange={(event) => setMode(event.target.value)}>
-        <MenuItem value="system">System</MenuItem>
-        <MenuItem value="light">Light</MenuItem>
-        <MenuItem value="dark">Dark</MenuItem>
-      </Select>
-    </Box>
-  );
-}
 
 const theme = createTheme({
   colorSchemes: {
@@ -49,6 +17,7 @@ const theme = createTheme({
           main: "#f7055f",
         },
         background: {
+          footer: '#ffc107',
           default: "#EAF1F9",
         },
         text: {
@@ -65,6 +34,7 @@ const theme = createTheme({
           main: "#f7055f",
         },
         background: {
+          footer: '#b28704',
           default: "#212121",
         },
         text: {

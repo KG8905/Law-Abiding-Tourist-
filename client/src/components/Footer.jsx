@@ -1,16 +1,27 @@
+import { Typography, Box, ThemeProvider} from "@mui/material";
+import DarkThemeSelect from "./DarkThemeSelect";
+
+
 const styles = {
   container: {
     display: "flex",
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
+    padding: 20
   },
 };
 
+
+
 export default function Footer() {
   return (
-    <div style={styles.container}>
-      <h5>This is the Starter Code Footer</h5>
-    </div>
+    <Box sx={{ backgroundColor: 'background.footer' }}>
+      <typography variant="h5" component="h2" style={styles.container}>
+        This is the Starter Code Footer
+      </typography>
+
+    </Box>
+    
   );
 }
