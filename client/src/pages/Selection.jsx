@@ -13,12 +13,12 @@ const headContent = (
 export default function Selection() {
   const {loading, data} = useQuery(QUERY_LAWS)
   console.log(data)
-  const laws = data.laws
+  const laws = data?.laws || [];
   return (
     <Page isProtected={true} headContent={headContent}>
       <div>Selection</div>
       {laws.map(function(law) {
-        return <Box> 
+        return <Box sx={{display: "flex", flexDirection: "column", gap: 2, m:10}}> 
           <div>{law.title}</div>
           <div>{law.location}</div>
           <div>{law.category}</div>
