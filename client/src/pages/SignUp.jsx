@@ -14,7 +14,14 @@ import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
-import { Container, TextField, Divider, FormControl } from "@mui/material";
+import {
+  Container,
+  TextField,
+  Divider,
+  FormControl,
+  Link,
+  useColorScheme,
+} from "@mui/material";
 import GoogleIcon from "@mui/icons-material/Google";
 import AppleIcon from "@mui/icons-material/Apple";
 
@@ -44,6 +51,7 @@ export default function SignUp() {
   const [addUser, { error, data, loading }] = useMutation(ADD_USER);
   const [state, dispatch] = useGlobalContext();
   const { isAuthenticated } = state;
+  const { mode } = useColorScheme();
 
   const [formState, setFormState] = useState({
     userName: "",
@@ -144,7 +152,11 @@ export default function SignUp() {
                           Loading...
                         </Button>
                       ) : (
-                        <Button type="submit" style={styles.submitBtn}>
+                        <Button
+                          type="submit"
+                          style={styles.submitBtn}
+                          variant="contained"
+                        >
                           Submit
                         </Button>
                       )}
@@ -158,14 +170,14 @@ export default function SignUp() {
                 <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
                   <Button
                     fullWidth
-                    variant="outlined"
+                    variant={mode === "dark" ? "contained" : "outlined"}
                     startIcon={<GoogleIcon />}
                   >
                     Sign up with Google
                   </Button>
                   <Button
                     fullWidth
-                    variant="outlined"
+                    variant={mode === "dark" ? "contained" : "outlined"}
                     startIcon={<AppleIcon />}
                   >
                     Sign up with Apple
