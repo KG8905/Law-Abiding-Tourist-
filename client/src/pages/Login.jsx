@@ -14,7 +14,13 @@ import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
-import { Container, TextField, Divider, Link } from "@mui/material";
+import {
+  Container,
+  TextField,
+  Divider,
+  Link,
+  useColorScheme,
+} from "@mui/material";
 import GoogleIcon from "@mui/icons-material/Google";
 import AppleIcon from "@mui/icons-material/Apple";
 
@@ -30,6 +36,7 @@ export default function Login() {
   const [loginUser, { error, data, loading }] = useMutation(LOGIN_USER);
   const [state, dispatch] = useGlobalContext();
   const { isAuthenticated } = state;
+  const { mode } = useColorScheme();
 
   const [formState, setFormState] = useState({
     email: "",
@@ -121,8 +128,14 @@ export default function Login() {
                       alignItems: "center",
                     }}
                   >
-                    <Link component="button" variant="body2">
-                      Forgot Password?
+                    <Link
+                      component="button"
+                      variant="body2"
+                      sx={{ color: mode === "dark" ? "inherit" : "" }}
+                    >
+                      <Typography variant="body2" sx={{ color: "inherit" }}>
+                        Forgot Password?
+                      </Typography>
                     </Link>
                   </Box>
                   <Button
@@ -139,7 +152,11 @@ export default function Login() {
                 )}
                 <Typography sx={{ textAlign: "center" }}>
                   Don't have an account?{" "}
-                  <Link href="/signup" variant="body2">
+                  <Link
+                    href="/signup"
+                    variant="body2"
+                    sx={{ color: mode === "dark" ? "inherit" : "" }}
+                  >
                     Sign up
                   </Link>
                 </Typography>
@@ -147,14 +164,14 @@ export default function Login() {
                 <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
                   <Button
                     fullWidth
-                    variant="outlined"
+                    variant={mode === "dark" ? "contained" : "outlined"}
                     startIcon={<GoogleIcon />}
                   >
                     Sign in with Google
                   </Button>
                   <Button
                     fullWidth
-                    variant="outlined"
+                    variant={mode === "dark" ? "contained" : "outlined"}
                     startIcon={<AppleIcon />}
                   >
                     Sign in with Apple

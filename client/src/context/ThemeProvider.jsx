@@ -1,10 +1,14 @@
-import * as React from 'react';
-import Box from '@mui/material/Box';
-import Select from '@mui/material/Select';
-import MenuItem from '@mui/material/MenuItem';
-import { ThemeProvider, createTheme, useColorScheme } from '@mui/material/styles';
-import { CssBaseline } from '@mui/material';
-import { indigo, pink, teal, blueGrey } from '@mui/material/colors';
+import * as React from "react";
+import Box from "@mui/material/Box";
+import Select from "@mui/material/Select";
+import MenuItem from "@mui/material/MenuItem";
+import {
+  ThemeProvider,
+  createTheme,
+  useColorScheme,
+} from "@mui/material/styles";
+import { CssBaseline } from "@mui/material";
+import { indigo, pink, teal, blueGrey } from "@mui/material/colors";
 
 function MyApp() {
   const { mode, setMode } = useColorScheme();
@@ -14,15 +18,15 @@ function MyApp() {
   return (
     <Box
       sx={{
-        display: 'flex',
-        width: '100%',
-        alignItems: 'center',
-        justifyContent: 'center',
-        bgcolor: 'background.default',
-        color: 'text.primary',
+        display: "flex",
+        width: "100%",
+        alignItems: "center",
+        justifyContent: "center",
+        bgcolor: "background.default",
+        color: "text.primary",
         borderRadius: 1,
         p: 3,
-        minHeight: '56px',
+        minHeight: "56px",
       }}
     >
       <Select value={mode} onChange={(event) => setMode(event.target.value)}>
@@ -39,43 +43,42 @@ const theme = createTheme({
     light: {
       palette: {
         primary: {
-          main: '#2c6ec3',
+          main: "#2c6ec3",
         },
         secondary: {
-          main: '#f7055f',
+          main: "#f7055f",
         },
         background: {
-          default: '#b6f3f3',
+          default: "#EAF1F9",
         },
         text: {
-          primary: '#000000',
+          primary: "#000000",
         },
       },
     },
     dark: {
       palette: {
         primary: {
-          main: '#0d47a1',
+          main: "#272727",
         },
         secondary: {
-          main: '#f7055f',
+          main: "#f7055f",
         },
         background: {
-          default: '#1b3734',
+          default: "#212121",
         },
         text: {
-          primary: '#f5e8e8',
+          primary: "#f5e8e8",
         },
       },
     },
   },
 });
 
-
 export default function MuiTheme({ children }) {
   return (
     <ThemeProvider theme={theme}>
-        <CssBaseline />
+      <CssBaseline />
       {children}
     </ThemeProvider>
   );
