@@ -59,6 +59,8 @@ const typeDefs = `
     loginUser(email: String!, password: String!): Auth
     addLaw(lawInput: lawInput): Law
     addComment(_id: ID!, commentInput: commentInput): Comment
+    removeLaw(lawId: ID!): Law
+    removeComment(commentId: ID!, lawId: ID!): Law
   }
 `;
 

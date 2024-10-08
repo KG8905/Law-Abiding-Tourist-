@@ -79,7 +79,7 @@ const resolvers = {
     removeComment: async (parent, { lawId, commentId }, context) => {
       if(context.user) {
         return Law.findOneAndUpdate(
-          { _id: thoughtId },
+          { _id: lawId },
           { $pull: { comments: { _id: commentId } } },
           { new: true }
         );
