@@ -70,6 +70,22 @@ const resolvers = {
       };
       throw AuthenticationError;
     },
+    removeLaw: async (parent, { lawId }, context) => {
+      if(context.user) {
+        return Law.findOneAndDelete({ _id: lawId });
+      }
+      throw AuthenticationError;
+    },
+    removeComment: async (parent, { lawId, commentId }, context) => {
+      if(context.user) {
+        return Law.findOneAndUpdate(
+          { _id: thoughtId },
+          { $pull: { comments: { _id: commentId } } },
+          { new: true }
+        );
+      }
+      throw AuthenticationError;
+    },
   }
 };
 
