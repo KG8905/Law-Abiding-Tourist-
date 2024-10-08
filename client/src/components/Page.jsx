@@ -10,7 +10,6 @@ const styles = {
     minHeight: "100vh",
   },
   main: {
-    paddingTop: "20px",
     flexGrow: "1",
     display: "flex",
   },
