@@ -10,6 +10,7 @@ import SignUp from "./pages/SignUp";
 import Selection from "./pages/Selection.jsx";
 import App from "./App.jsx";
 import NewLaw from "./pages/NewLaw.jsx";
+import About from "./pages/About.jsx"
 
 const router = createBrowserRouter([
   {
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
         path: "/newlaw",
         element: <NewLaw />,
       },
+      {
+        path: "/about",
+        element: <About/>,
+      }
     ],
   },
 ]);
