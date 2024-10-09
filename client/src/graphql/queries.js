@@ -28,3 +28,22 @@ export const QUERY_LAWS = gql`
     }
   }
 `;
+
+export const QUERY_LAWS_BY_LOCATION = gql`
+  query Query($location: String!) {
+    location(location: $location) {
+      title
+      source
+      location
+      description
+      comments {
+        userName
+        createdAt
+        commentText
+        _id
+      }
+      category
+      _id
+    }
+  }
+`;
