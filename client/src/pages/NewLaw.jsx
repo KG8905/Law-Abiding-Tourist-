@@ -18,9 +18,7 @@ import { ADD_LAW } from "../graphql/mutations";
 import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import { Form } from "react-router-dom";
-
-const categories = ["Traffic", "Wildlife", "Civil", "Criminal", "Probate"];
-
+import { QUERY_ME } from "../graphql/queries";
 // import CardActions from "@mui/material/CardActions";
 
 const styles = {
@@ -33,6 +31,8 @@ const styles = {
     cursor: "pointer",
   },
 };
+
+const categories = ["Traffic", "Wildlife", "Civil", "Criminal", "Probate"];
 
 const allUsStates = [
   "AL",
@@ -105,7 +105,13 @@ const NewLaw = () => {
   const [source, setSource] = useState("");
   const [submittedData, setSubmittedData] = useState(null);
 
-  const [createLaw, { loading }] = useMutation(ADD_LAW);
+  const [createLaw, { loading }] = useMutation(ADD_LAW, {
+    refetchQueries: [
+      {
+        query: QUERY_ME,
+      },
+    ],
+  });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
