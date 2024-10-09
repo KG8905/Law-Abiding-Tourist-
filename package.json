@@ -16,8 +16,5 @@
   "license": "ISC",
   "devDependencies": {
     "concurrently": "^5.1.0"
-  },
-  "dependencies": {
-    "@mui/lab": "^6.0.0-beta.10"
   }
 }
