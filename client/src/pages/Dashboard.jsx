@@ -10,8 +10,10 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Page from "../components/Page";
 import { Container } from "@mui/material";
-import { useQuery } from '@apollo/client';
+import { useMutation, useQuery } from '@apollo/client';
 import { QUERY_ME } from '../graphql/queries';
+import Button from '@mui/material/Button';
+import { REMOVE_LAW } from '../graphql/mutations';
 
 
 
@@ -25,6 +27,15 @@ const StyledAccordion = styled(Accordion)(({ theme }) => ({
     }),
 }));
 
+
+const styles = {
+    button: {
+        margin: "0.5rem",
+    },
+};
+
+
+
 const headContent = (
     <>
     <title>Dashboard</title>
@@ -36,7 +47,27 @@ const headContent = (
 const Dashboard = () => {
 
     const {data} = useQuery(QUERY_ME);
+    const [removeLaw] = useMutation(REMOVE_LAW, {
+        refetchQueries: [
+            {
+                query: QUERY_ME
+            }
+        ]
+    });
     console.log(data);
+
+    const handleRemoveLaw = async (lawId) => {
+        try {
+            await removeLaw({
+                variables: {
+                    lawId
+                }
+            })
+        } catch(err) {
+            console.log(err);
+        }
+    }
+
 
     const laws = data?.me.lawsByUser || [];
 
@@ -56,6 +87,14 @@ const Dashboard = () => {
                                     Source: {source}  <br />,
                                     Description: {description}  <br />
                                 </AccordionDetails>
+                                <Button 
+                                    variant="contained" 
+                                    style={styles.button} 
+                                    size="small" 
+                                    onClick={() => handleRemoveLaw(_id)}
+                                >
+                                    Delete
+                                </Button>
                             </StyledAccordion>
                         </Paper>
                     ))}
