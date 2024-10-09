@@ -40,4 +40,44 @@ mutation AddLaw($lawInput: lawInput) {
     _id
   }
 }
-`
+`;
+
+export const ADD_COMMENT = gql`
+  mutation addCommentMutation($id: ID!, $commentInput: commentInput) {
+    addComment(_id: $id, commentInput: $commentInput) {
+      _id
+      commentText
+      userName
+      createdAt
+    }
+  }
+`;
+
+export const REMOVE_LAW = gql`
+  mutation removeLawMutation($lawId: ID!) {
+    removeLaw(lawId: $lawId) {
+      _id
+      title
+      location
+      description
+    }
+  }
+`;
+
+export const REMOVE_COMMENT = gql`
+  mutation removeCommentMutation($commentId: ID!, $lawId: ID!) {
+    removeComment(commentId: $commentId, lawId: $lawId) {
+      _id
+      title
+      category
+      source
+      location
+      description
+      comments {
+        _id
+        commentText
+        userName
+      }
+    }
+  }
+`;
