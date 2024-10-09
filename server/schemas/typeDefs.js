@@ -9,6 +9,7 @@ const typeDefs = `
     password: String!
     createdAt: String
     updatedAt: String
+    lawsByUser: [Law]
   }
 
   type Comment {
@@ -52,6 +53,7 @@ const typeDefs = `
     location(location: String!): [Law]
     laws: [Law]
     lawById(lawId: ID!): Law
+    allUsers: [User]
   }
 
   type Mutation {
