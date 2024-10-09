@@ -9,7 +9,7 @@ const resolvers = {
       if (!context.user) {
         throw AuthenticationError;
       }
-      return await User.findById(context.user._id)
+      return await User.findById(context.user._id).populate('lawsByUser')
     },
     category: async (parent, {category}) => {
       return await Law.find({ category: category }).limit(10);
@@ -22,6 +22,9 @@ const resolvers = {
     },
     lawById: async (parent, { lawId }) => {
       return await Law.findOne({ _id: lawId });
+    },
+    allUsers: async () => {
+      return await User.find().populate('lawsByUser');
     }
   },
   Mutation: {
@@ -54,6 +57,13 @@ const resolvers = {
     addLaw: async (parent, args, context) => {
       if (context.user) {
         const law = await Law.create(args.lawInput);
+
+        const user = await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $push: { lawsByUser: law } },
+          { new: true }
+        );
+
         return law;
       };
       throw AuthenticationError;

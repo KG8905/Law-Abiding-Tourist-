@@ -28,6 +28,12 @@ const userSchema = new Schema(
       type: Date,
       default: Date.now,
     },
+    lawsByUser: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Law'
+      },
+    ],
   },
   {
     toJSON: {
