@@ -4,11 +4,22 @@ export const QUERY_ME = gql`
   query getMeQuery {
     me {
       _id
-      firstName
-      lastName
+      userName
       email
       createdAt
       updatedAt
+      lawsByUser {
+        _id
+        location
+        category
+        source
+        description
+        title
+        comments {
+          userName
+          commentText
+        }
+      }
     }
   }
 `;

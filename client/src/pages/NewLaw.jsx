@@ -4,6 +4,7 @@ import Page from "../components/Page";
 import { Container } from "@mui/material";
 import { useMutation } from '@apollo/client';
 import { ADD_LAW } from '../graphql/mutations';
+import { QUERY_ME } from '../graphql/queries';
 
 const categories = [
   'Traffic',
@@ -29,7 +30,13 @@ const NewLaw = () => {
   const [source, setSource] = useState('');
   const [submittedData, setSubmittedData] = useState(null);
 
-  const [createLaw, {loading}] = useMutation(ADD_LAW)
+  const [createLaw, {loading}] = useMutation(ADD_LAW, {
+    refetchQueries: [
+      {
+        query: QUERY_ME
+      }
+    ]
+  })
 
   const handleSubmit = async (e) => {
     e.preventDefault();
