@@ -188,101 +188,84 @@ const NewLaw = () => {
                       sx={{
                         mb: 3,
                       }}
+                      // multiline
+                      // rows={2}
                     />
-                  </Stack>
-
-                  <div className="form-group">
-                    <FormControl fullWidth sx={{ marginBottom: 2 }}>
-                      <InputLabel id="category-label">Category</InputLabel>
-                      <Select
-                        labelId="category-label"
-                        id="category-select"
-                        value={category}
-                        label="Category"
-                        onChange={(e) => setCategory(e.target.value)}
-                      >
-                        {categories.map((cat) => (
-                          <MenuItem key={cat} value={cat}>
-                            {cat}
-                          </MenuItem>
-                        ))}
-                      </Select>
-                    </FormControl>
-                  </div>
-
-                  <div className="form-group">
-                    <FormControl fullWidth sx={{ marginBottom: 2 }}>
-                      <InputLabel id="location-label">Location</InputLabel>
-                      <Select
-                        labelId="location-label"
-                        id="location-select"
-                        value={location}
-                        label="Location"
-                        onChange={(e) => setLocation(e.target.value)}
-                      >
-                        {allUsStates.map((local) => (
-                          <MenuItem key={local} value={local}>
-                            {local}
-                          </MenuItem>
-                        ))}
-                      </Select>
-                    </FormControl>
-                  </div>
-
-                  <div className="form-group">
-                    <label>Description:</label>
-                    <textarea
+                    <div className="form-group">
+                      <FormControl fullWidth>
+                        <InputLabel id="category-label">Category</InputLabel>
+                        <Select
+                          labelId="category-label"
+                          id="category-select"
+                          value={category}
+                          label="Category"
+                          onChange={(e) => setCategory(e.target.value)}
+                        >
+                          {categories.map((cat) => (
+                            <MenuItem key={cat} value={cat}>
+                              {cat}
+                            </MenuItem>
+                          ))}
+                        </Select>
+                      </FormControl>
+                    </div>
+                    <div className="form-group">
+                      <FormControl fullWidth>
+                        <InputLabel id="location-label">Location</InputLabel>
+                        <Select
+                          labelId="location-label"
+                          id="location-select"
+                          value={location}
+                          label="Location"
+                          onChange={(e) => setLocation(e.target.value)}
+                        >
+                          {allUsStates.map((local) => (
+                            <MenuItem key={local} value={local}>
+                              {local}
+                            </MenuItem>
+                          ))}
+                        </Select>
+                      </FormControl>
+                    </div>
+                    <TextField
+                      type="text"
                       value={description}
                       onChange={(e) => setDescription(e.target.value)}
                       placeholder="Write your description here"
                       required
-                      style={{
-                        width: "100%",
-                        padding: "12px",
-                        borderRadius: "4px",
-                        border: "1px solid #ccc",
-                        marginBottom: "20px",
-                      }}
+                      fullWidth
+                      multiline
+                      rows={2}
                     />
-                  </div>
-
-                  <div className="form-group">
-                    <label>Comments:</label>
-                    <textarea
+                    {/* comments section */}
+                    <TextField
+                      type="text"
                       value={comments}
                       onChange={(e) => setComments(e.target.value)}
-                      placeholder="Comments"
+                      placeholder="Write your description here"
                       required
-                      style={{
-                        width: "100%",
-                        padding: "12px",
-                        borderRadius: "4px",
-                        border: "1px solid #ccc",
-                        marginBottom: "20px",
-                      }}
+                      fullWidth
+                      multiline
+                      rows={2}
                     />
-                  </div>
-
-                  <div className="form-group">
-                    <label>Source:</label>
-                    <textarea
+                    <TextField
+                      type="text"
                       value={source}
                       onChange={(e) => setSource(e.target.value)}
                       placeholder="What is your source"
                       required
-                      style={{
-                        width: "100%",
-                        padding: "12px",
-                        borderRadius: "4px",
-                        border: "1px solid #ccc",
-                        marginBottom: "20px",
-                      }}
+                      fullWidth
+                      multiline
+                      rows={2}
                     />
-                  </div>
-
-                  <Button type="submit" style={styles.submitBtn}>
-                    Submit
-                  </Button>
+                    <Button
+                      type="submit"
+                      style={styles.submitBtn}
+                      variant="contained"
+                    >
+                      Submit
+                    </Button>
+                  </Stack>
                 </Form>
 
                 {submittedData && (
