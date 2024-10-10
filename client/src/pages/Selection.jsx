@@ -17,6 +17,7 @@ import Page from "../components/Page";
 import { QUERY_LAWS_BY_LOCATION } from "../graphql/queries";
 import { useLazyQuery } from "@apollo/client";
 
+// Memoized list of all U.S. states to avoid recreation on each render
 const allUsStates = [
   "AL",
   "AK",
@@ -129,25 +130,36 @@ export default function Selection() {
               ))}
             </Select>
           </FormControl>
+
           {loading && <CircularProgress />}
+
           {error && (
-            <Typography color="error">Error fetching data.</Typography>
+            <Typography color="error">
+              Error fetching data. Please try again later.
+            </Typography>
           )}
+
           {data && data.location && (
             <Box>
-              <Typography variant="h6">Laws for {location}:</Typography>
+              <Typography variant="h6" gutterBottom>
+                Laws for {location}:
+              </Typography>
               {data.location.map((law) => (
                 <Card key={law.id} sx={{ margin: 2, width: "100%" }}>
                   <CardContent>
                     <Stack spacing={2}>
-                      <Typography variant="h6">{law.title}</Typography>
-                      <Typography variant="body2">{law.category}</Typography>
-                      <Typography variant="body1">
-                        {law.description}
+                      <Typography variant="h6">Title: {law.title}</Typography>
+                      <Typography variant="body2" color="textSecondary">
+                        Category: {law.category}
                       </Typography>
-                      <Typography variant="caption">{law.source}</Typography>
+                      <Typography variant="body1">Description: {law.description}</Typography>
+                      <Typography variant="caption">
+                        Source: {law.source}
+                      </Typography>
+
                       <Divider sx={{ marginY: 1 }} />
-                      <Typography variant="h6">Comments:</Typography>
+
+                      <Typography variant="h6">Comments</Typography>
                       {law.comments.length > 0 ? (
                         law.comments.map((comment, index) => (
                           <Box
