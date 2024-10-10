@@ -2,7 +2,7 @@ import Page from "../components/Page";
 
 const headContent = (
   <>
-    <title>Change Me! - 404</title>
+    <title>404</title>
     <meta name="description" content="404 Error, page not found." />
   </>
 );

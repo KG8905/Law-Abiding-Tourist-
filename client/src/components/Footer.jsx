@@ -18,7 +18,7 @@ export default function Footer() {
   return (
     <Box sx={{ backgroundColor: 'background.footer' }}>
       <typography variant="h5" component="h2" style={styles.container}>
-        This is the Starter Code Footer
+        Copyrights to Team L.O.T @ 2024
       </typography>
 
     </Box>
