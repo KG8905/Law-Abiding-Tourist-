@@ -41,12 +41,12 @@ const router = createBrowserRouter([
       },
       {
         path: "/about",
-        element: <About/>,
+        element: <About />,
       },
       {
         path: "/dashboard",
-        element: <Dashboard />
-      }
+        element: <Dashboard />,
+      },
     ],
   },
 ]);

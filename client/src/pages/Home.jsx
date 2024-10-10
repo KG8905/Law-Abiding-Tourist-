@@ -9,6 +9,7 @@ import {
   styled,
 } from "@mui/material";
 import Grid from "@mui/material/Grid2";
+import { Link } from "react-router-dom";
 
 const headContent = (
   <>
@@ -26,6 +27,14 @@ const BackgroundImage = styled(Box)({
   display: "flex",
   flexGrow: 1,
   // flexDirection: "column",
+  // background: "rgba(255, 255, 255, 0.2)",
+  // backdropFilter: "blur(10px)",
+  // "-webkit-backdrop-filter": "blur(10px)",
+  // borderRadius: "10px",
+  // border: "1px solid rgba(255, 255, 255, 0.3)",
+  // boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+  // overflow: "hidden",
+  // opacity: "0.9",
 });
 
 export default function Home() {
@@ -45,23 +54,32 @@ export default function Home() {
             height="100%"
           >
             <Typography
-              variant="h3"
-              component="h1"
+              variant="h1"
+              // component="h1"
               gutterBottom
-              color="white"
+              color="black"
               textAlign="center"
+              sx={{
+                fontWeight: "bold",
+              }}
             >
               Lets Travel to a New Place
             </Typography>
-            <Button
-              variant="contained"
-              color="secondary"
-              size="large"
-              fullWidth
+            <Link to="/newlaw">
+              <Button
+                variant="contained"
+                color="secondary"
+                size="large"
+                fullWidth
+              >
+                Start Here!
+              </Button>
+            </Link>
+            <Typography
+              variant="body1"
+              color="black"
+              sx={{ fontWeight: "bold", marginTop: 2 }}
             >
-              Start Here!
-            </Button>
-            <Typography variant="body2" color="white" sx={{ marginTop: 2 }}>
               Discover the experience
             </Typography>
           </Box>
