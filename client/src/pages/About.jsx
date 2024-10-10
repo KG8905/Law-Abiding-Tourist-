@@ -285,7 +285,7 @@ const About = () => {
                   Jeremy Brown
                 </Typography>
                 <Typography variant="body2" sx={{ color: "text.secondary" }}>
-                  Description: Back End Developer & Master of Cleaver Puns
+                  Description: Back End Developer & Master of Clever Puns
                 </Typography>
               </CardContent>
               <CardActions sx={{ justifyContent: "center", pb: 2 }}>
