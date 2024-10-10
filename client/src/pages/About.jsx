@@ -108,7 +108,7 @@ const About = () => {
                                 Matthew Comer
                                 </Typography>
                                 <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-                                Description
+                                Matt is a huge nerd that loves sports, Lego, Star Wars and video games.
                                 </Typography>
                             </CardContent>
                             <CardActions>

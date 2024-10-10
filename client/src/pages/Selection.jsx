@@ -10,7 +10,8 @@ import {
   CircularProgress,
   CardContent,
   Card,
-  Stack
+  Stack,
+  Divider,
 } from "@mui/material";
 import Page from "../components/Page";
 import { QUERY_LAWS_BY_LOCATION } from "../graphql/queries";
@@ -88,11 +89,12 @@ const headContent = (
 );
 
 export default function Selection() {
-  // State to track the selected location
   const [location, setLocation] = useState("");
 
   // Lazy query hook to fetch laws
-  const [getLaws, { loading, error, data }] = useLazyQuery(QUERY_LAWS_BY_LOCATION);
+  const [getLaws, { loading, error, data }] = useLazyQuery(
+    QUERY_LAWS_BY_LOCATION
+  );
 
   // Handler for location change
   const handleLocationChange = (event) => {
@@ -129,24 +131,47 @@ export default function Selection() {
               ))}
             </Select>
           </FormControl>
+          {loading && <CircularProgress />}
+          {error && (
+            <Typography color="error">Error fetching data.</Typography>
+          )}
           {data && data.location && (
             <Box>
               <Typography variant="h6">Laws for {location}:</Typography>
               {data.location.map((law) => (
-                <Card>
+                <Card key={law.id} sx={{ margin: 2, width: "100%" }}>
                   <CardContent>
-                    <Stack spacing={4}>
-                    <Typography key={law.id} variant="body1">
-                        {law.title}
-                      </Typography>
-                      <Typography key={law.id} variant="body1">
-                        {law.category}
-                      </Typography>
-                      <Typography key={law.id} variant="body1">
+                    <Stack spacing={2}>
+                      <Typography variant="h6">{law.title}</Typography>
+                      <Typography variant="body2">{law.category}</Typography>
+                      <Typography variant="body1">
                         {law.description}
                       </Typography>
-
-
+                      <Typography variant="caption">{law.source}</Typography>
+                      <Divider sx={{ marginY: 1 }} />
+                      <Typography variant="h6">Comments:</Typography>
+                      {law.comments.length > 0 ? (
+                        law.comments.map((comment, index) => (
+                          <Box
+                            key={index}
+                            sx={{
+                              padding: 1,
+                              borderBottom: "1px solid #e0e0e0",
+                            }}
+                          >
+                            <Typography variant="subtitle2">
+                              {comment.user}:
+                            </Typography>
+                            <Typography variant="body2">
+                              {comment.text}
+                            </Typography>
+                          </Box>
+                        ))
+                      ) : (
+                        <Typography variant="body2">
+                          No comments yet.
+                        </Typography>
+                      )}
                     </Stack>
                   </CardContent>
                 </Card>
